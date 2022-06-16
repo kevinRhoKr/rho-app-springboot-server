@@ -101,16 +101,16 @@ public class PostController {
 
     @CrossOrigin
     @PutMapping("/posts/update")
-    public HashMap<String, String> updatePost(@RequestBody Map<String, String> req) {
+    public Post updatePost(@RequestBody Map<String, String> req) {
 
         System.out.println("updating..");
 
         HashMap<String, String> res = new HashMap<>();
+        Integer post_id = Integer.parseInt(req.get("post_id"));
+        Post currentPost = postRepo.findById(post_id).get();
+        currentPost.set_body(req.get("body"));
 
-        
-
-        return res;
-
+        return postRepo.save(currentPost);
 
     }
 
