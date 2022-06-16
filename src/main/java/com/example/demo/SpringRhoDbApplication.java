@@ -12,9 +12,6 @@ public class SpringRhoDbApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(SpringRhoDbApplication.class, args);
 
-//		public WebMvcConfigurer corsConfigurer() {
-//			return new WebMvcConfigurerAdapter()
-//		}
 	}
 
 }
