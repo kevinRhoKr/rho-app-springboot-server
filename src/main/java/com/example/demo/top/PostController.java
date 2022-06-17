@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.persistence.PreUpdate;
 import java.sql.Timestamp;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
 import java.util.*;
@@ -54,6 +55,34 @@ public class PostController {
                 }
             }
         }
+
+//        Collections.sort(res, new Comparator<Map<String, String>>() {
+//            @Override
+//            public int compare(Map<String, String> o1, Map<String, String> o2) {
+//                SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
+//                try {
+//                    Date d1 = dateFormat.parse(o1.get("date"));
+//                    Date d2 = dateFormat.parse(o2.get("date"));
+//                    System.out.println(d1);
+//                    return d1.compareTo(d2);
+//                } catch (ParseException e) {
+//                    e.printStackTrace();
+//                }
+//
+//                return -1;
+//            }
+//        });
+//        SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
+//        res.sort(Comparator.comparing((Map<String, String> o) -> {
+//            try {
+//                return dateFormat.parse(o.get("date"));
+//            } catch (ParseException e) {
+//                e.printStackTrace();
+//            }
+//            return null;
+//        }));
+
+
 
         return res;
     }
@@ -105,7 +134,7 @@ public class PostController {
 
         System.out.println("updating..");
 
-        HashMap<String, String> res = new HashMap<>();
+        //HashMap<String, String> res = new HashMap<>();
         Integer post_id = Integer.parseInt(req.get("post_id"));
         Post currentPost = postRepo.findById(post_id).get();
         currentPost.set_body(req.get("body"));
